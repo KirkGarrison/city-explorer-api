@@ -23,3 +23,13 @@ Scott - Collaborator for API sketch
 
 ## Credit and Collaborations
 Scott
+
+Name of feature: city explorer API
+
+Estimate of time needed to complete: 4 hours (assumed I wouldn't complete)
+
+Start time: 1:30pm
+
+Finish time: 5pm
+
+Actual time needed to complete: 3.5 hours (not complete)
