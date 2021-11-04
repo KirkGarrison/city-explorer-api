@@ -13,8 +13,7 @@ app.use(cors());
 const PORT = process.env.PORT || 3001
 
 app.get('/hello', (request, response) => { response.send('Hello, it works!') })
-// ./data/weather vs ./weather
-app.get('./weather', handleGetWeather);
+app.get('/weather', handleGetWeather);
 app.get('/*', (req, res) => res.status(404).send('that pathway was not found'))
 
 
