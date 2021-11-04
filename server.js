@@ -12,13 +12,25 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3001
 
-app.get('/hello', (request, response) => { response.send('Hello, it works!') })
-app.get('/weather', handleGetWeatherList);
+app.get('/hello', (req, res) => res.status(200).send('hello'));
+app.get('/weather', handleGetWeather);
+// app.get('/movies', handleGetMovie);
 
-function handleGetWeatherList(req, res) {
-    req.query
-    console.log('The shopping list route was hit!!!');
-    res.status(200).send(weatherListing)
+async function handleGetWeather(req, res) {
+    const {lat, lon } = req.query;
+    const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}lon=${lon}&key=${process.env.REACT_APP_WEATHER_KEY}&include=minutely`;
+    const results = await axios.get(url);
+    // console.log(results.data.data);
+    const forecastData = results.data.data.map(forecast => new Forecast(forecast));
+    res.status(200).send(forecastData);
 }
+
+class Forecast {
+    constructor(obj) {
+        this.date = obj.datetime;
+        this.description = obj.description;
+    }
+}
+
 
 app.listen(PORT, () => console.log(`I am a server that is listening on port:${PORT}`));
