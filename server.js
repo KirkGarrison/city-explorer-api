@@ -13,7 +13,7 @@ app.use(cors());
 const PORT = process.env.PORT || 3001
 
 app.get('/hello', (request, response) => { response.send('Hello, it works!') })
-app.get('/data/weather', handleGetWeatherList);
+app.get('/weather', handleGetWeatherList);
 
 function handleGetWeatherList(req, res) {
     req.query
